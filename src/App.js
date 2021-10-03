@@ -42,6 +42,7 @@ function App() {
         totalPosts={posts.length}
         postsPerPage={postsPerPage}
         onSwitchPage={switchPageHandler}
+        currentPage={currentPage}
       />
     </div>
   );
