@@ -8,7 +8,7 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage] = useState(10);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -18,7 +18,6 @@ function App() {
         'https://jsonplaceholder.typicode.com/posts'
       );
 
-      console.log('x', response.data);
       setPosts(response.data);
       setIsLoading(false);
     };
@@ -31,11 +30,19 @@ function App() {
   const getIndexOfFirstPost = getIndexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(getIndexOfFirstPost, getIndexOfLastPost);
 
+  const switchPageHandler = (pageNum) => {
+    setCurrentPage(pageNum);
+  };
+
   return (
     <div className="container mt-5">
       <h2 className="text-primary mb-3">The Blog</h2>
       <Posts posts={currentPosts} loading={isLoading} />
-      <Pagination totalPosts={posts.length} postsPerPage={postsPerPage} />
+      <Pagination
+        totalPosts={posts.length}
+        postsPerPage={postsPerPage}
+        onSwitchPage={switchPageHandler}
+      />
     </div>
   );
 }
