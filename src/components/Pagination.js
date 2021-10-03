@@ -7,8 +7,10 @@ const Pagination = (props) => {
     onSwitchPage: switchPage,
     currentPage,
   } = props;
+
   const pageNums = [];
 
+  // Generate an array of page numbers
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNums.push(i);
   }
