@@ -10,7 +10,7 @@ const Posts = (props) => {
   console.log(posts);
 
   return (
-    <ul className="list-group mb-5 mt-5">
+    <ul className="list-group mb-4 mt-4">
       {posts.map((p) => {
         return (
           <li className="list-group-item" key={posts.id}>
